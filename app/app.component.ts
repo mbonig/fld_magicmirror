@@ -23,7 +23,7 @@ import {InspirationComponent} from './inspiration';
                 min-height: 95vh;
             }
             .magic-mirror .full-size{
-                flex:1;
+                flex:1 1;
             }
         `
     ]
