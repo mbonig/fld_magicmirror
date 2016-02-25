@@ -32,8 +32,7 @@ System.register(['angular2/core', './weather.services', 'rxjs/Rx'], function(exp
                         .map(function (res) { return res.json(); })
                         .subscribe(function (data) {
                         _this.weather = data;
-                        console.log(_this.weather);
-                    }, function (err) { return _this.logError(err); }, function () { return console.log('Random Quote Complete'); });
+                    });
                 };
                 WeatherComponent.prototype.logError = function (err) {
                     console.error('There was an error: ' + err);

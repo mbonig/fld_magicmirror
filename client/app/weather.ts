@@ -25,10 +25,7 @@ export class WeatherComponent {
             .subscribe(
                 data => {
                     this.weather = data;
-                    console.log(this.weather);
-                },
-                err => this.logError(err),
-                () => console.log('Random Quote Complete')
+                }
             );
     }
 

@@ -3,12 +3,12 @@ import {Http} from 'angular2/http';
 
 
 @Injectable()
-export class WeatherService {
+export class VerseService {
     constructor(public http:Http) {
 
     }
 
-    getWeather() {
-        return this.http.get('/weather');
+    getVerse() {
+        return this.http.get('/votd');
     }
 }

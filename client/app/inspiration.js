@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', './votd.services'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,23 +10,37 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, votd_services_1;
     var InspirationComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (votd_services_1_1) {
+                votd_services_1 = votd_services_1_1;
             }],
         execute: function() {
             InspirationComponent = (function () {
-                function InspirationComponent() {
+                function InspirationComponent(verseService) {
+                    this.verseService = verseService;
+                    this.verseService = verseService;
                 }
+                InspirationComponent.prototype.ngAfterContentInit = function () {
+                    var _this = this;
+                    this.verseService.getVerse()
+                        .map(function (res) { return res.json(); })
+                        .subscribe(function (data) {
+                        _this.verse = data;
+                    });
+                };
                 InspirationComponent = __decorate([
                     core_1.Component({
                         selector: 'inspiration',
-                        template: '<p>this is where the inspirational stuff will go</p>'
+                        template: "<div>\n                <p>{{verse?.contents?.verse}}</p>\n                <p>{{verse?.contents?.book}} {{verse?.contents?.chapter}}:{{verse?.contents?.number}}</p>\n               </div>",
+                        providers: [votd_services_1.VerseService]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [votd_services_1.VerseService])
                 ], InspirationComponent);
                 return InspirationComponent;
             }());
