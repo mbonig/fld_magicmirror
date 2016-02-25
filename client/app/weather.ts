@@ -4,7 +4,8 @@ import 'rxjs/Rx';
 
 @Component({
     selector: 'weather',
-    template: '<p *ngFor="#item of weather?.weather">{{item.description}} <img src="http://openweathermap.org/img/w/{{item.icon}}.png"/> </p>',
+    template: `<div class="temp"><span>{{weather?.currently?.temperature}}</span></div>
+               <p >{{weather?.currently?.summary}}</p>`,
     providers: [WeatherService],
     styles: [`
         weather {

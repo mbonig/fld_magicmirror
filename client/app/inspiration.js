@@ -1,4 +1,6 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9,27 +11,27 @@ System.register(['angular2/core'], function(exports_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var CalendarComponent;
+    var InspirationComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            CalendarComponent = (function () {
-                function CalendarComponent() {
+            InspirationComponent = (function () {
+                function InspirationComponent() {
                 }
-                CalendarComponent = __decorate([
+                InspirationComponent = __decorate([
                     core_1.Component({
-                        selector: 'calendar',
-                        template: '<p>this is where the calendar stuff will go'
+                        selector: 'inspiration',
+                        template: '<p>this is where the inspirational stuff will go</p>'
                     }), 
                     __metadata('design:paramtypes', [])
-                ], CalendarComponent);
-                return CalendarComponent;
-            })();
-            exports_1("CalendarComponent", CalendarComponent);
+                ], InspirationComponent);
+                return InspirationComponent;
+            }());
+            exports_1("InspirationComponent", InspirationComponent);
         }
     }
 });
-//# sourceMappingURL=calendar.js.map
+//# sourceMappingURL=inspiration.js.map
