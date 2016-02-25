@@ -4,14 +4,15 @@
   "description": "A simple angular2 page for displaying magic mirror stuff",
   "main": "index.js",
   "scripts": {
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
     "server": "node server/app.js",
-    "start": "npm run server"
+    "start": "concurrent \"npm run server\" \"npm run tsc:w\""
   },
   "author": "Matthew Bonig",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.13.4",
-    "node-rest-client": "^1.8.0"
+    "express": "^4.13.4"
   },
   "devDependencies": {
     "concurrently": "^1.0.0",
