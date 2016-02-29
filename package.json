@@ -12,7 +12,9 @@
   "author": "Matthew Bonig",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "google-auth-library": "^0.9.7",
+    "googleapis": "^2.1.7"
   },
   "devDependencies": {
     "concurrently": "^1.0.0",
