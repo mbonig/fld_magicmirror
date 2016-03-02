@@ -4,8 +4,11 @@ import 'rxjs/Rx';
 
 @Component({
     selector: 'weather',
-    template: `<div class="temp"><span>{{weather?.currently?.temperature}}</span></div>
-               <p >{{weather?.currently?.summary}}</p>`,
+    template: `<canvas id="weather-icon" width="300" height="300"></canvas>
+                <div class="temp">
+               <span>{{weather?.currently?.temperature}}&deg;</span>
+               </div>
+               <p>{{weather?.currently?.summary}}</p>`,
     providers: [WeatherService],
     styles: [`
         weather {
@@ -15,8 +18,23 @@ import 'rxjs/Rx';
 })
 export class WeatherComponent {
     weather:Object;
+    iconTranslator:Object;
 
     constructor(private _weatherService:WeatherService) {
+        this.iconTranslator = {
+            "clear-day": Skycons.CLEAR_DAY,
+            "clear-night": Skycons.CLEAR_NIGHT,
+            "rain": Skycons.RAIN,
+            "snow": Skycons.SNOW,
+            "sleet": Skycons.SLEET,
+            "wind": Skycons.WIND,
+            "fog": Skycons.FOG,
+            "cloudy": Skycons.CLOUDY,
+            "partly-cloudy-day": Skycons.PARTLY_CLOUDY_DAY,
+            "partly-cloudy-night": Skycons.PARTLY_CLOUDY_NIGHT
+        };
+
+
     }
 
     ngAfterContentInit() {
@@ -25,8 +43,11 @@ export class WeatherComponent {
             .subscribe(
                 data => {
                     this.weather = data;
+                    skycons.add("weather-icon", this.iconTranslator[data.currently.icon]);
                 }
             );
+
+        var skycons = new Skycons({"color": '#fff'});
     }
 
     logError(err) {

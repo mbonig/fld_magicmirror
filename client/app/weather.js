@@ -25,6 +25,18 @@ System.register(['angular2/core', './weather.services', 'rxjs/Rx'], function(exp
             WeatherComponent = (function () {
                 function WeatherComponent(_weatherService) {
                     this._weatherService = _weatherService;
+                    this.iconTranslator = {
+                        "clear-day": Skycons.CLEAR_DAY,
+                        "clear-night": Skycons.CLEAR_NIGHT,
+                        "rain": Skycons.RAIN,
+                        "snow": Skycons.SNOW,
+                        "sleet": Skycons.SLEET,
+                        "wind": Skycons.WIND,
+                        "fog": Skycons.FOG,
+                        "cloudy": Skycons.CLOUDY,
+                        "partly-cloudy-day": Skycons.PARTLY_CLOUDY_DAY,
+                        "partly-cloudy-night": Skycons.PARTLY_CLOUDY_NIGHT
+                    };
                 }
                 WeatherComponent.prototype.ngAfterContentInit = function () {
                     var _this = this;
@@ -32,7 +44,9 @@ System.register(['angular2/core', './weather.services', 'rxjs/Rx'], function(exp
                         .map(function (res) { return res.json(); })
                         .subscribe(function (data) {
                         _this.weather = data;
+                        skycons.add("weather-icon", _this.iconTranslator[data.currently.icon]);
                     });
+                    var skycons = new Skycons({ "color": '#fff' });
                 };
                 WeatherComponent.prototype.logError = function (err) {
                     console.error('There was an error: ' + err);
@@ -40,7 +54,7 @@ System.register(['angular2/core', './weather.services', 'rxjs/Rx'], function(exp
                 WeatherComponent = __decorate([
                     core_1.Component({
                         selector: 'weather',
-                        template: "<div class=\"temp\"><span>{{weather?.currently?.temperature}}</span></div>\n               <p >{{weather?.currently?.summary}}</p>",
+                        template: "<canvas id=\"weather-icon\" width=\"300\" height=\"300\"></canvas>\n                <div class=\"temp\">\n               <span>{{weather?.currently?.temperature}}&deg;</span>\n               </div>\n               <p>{{weather?.currently?.summary}}</p>",
                         providers: [weather_services_1.WeatherService],
                         styles: ["\n        weather {\n            display: flex;\n        }\n    "]
                     }), 
