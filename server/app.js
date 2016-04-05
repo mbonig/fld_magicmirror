@@ -25,10 +25,23 @@ app.get('/weather', function (req, res) {
 });
 
 app.get('/votd', function (req, res) {
-    var votdUrl = 'http://quotes.rest/bible/vod.json';
-    client.get(votdUrl, function (data, response) {
-        res.send(data);
+
+    res.send({
+        success: {total: 1},
+        contents: {
+            verse: "Because Manasseh king of Judah has done these abominations, and has done wickedly above all that the Amorites did, which were before him, and has made Judah also to sin with his idols:",
+            number: "11",
+            chapter: "21",
+            book: "2 Kings",
+            testament: "Old Testament",
+            bookid: "12",
+            uuid: "0cEJikPnOy_jKYgWzvowMAeF"
+        }
     });
+    /*    var votdUrl = 'http://quotes.rest/bible/vod.json';
+     client.get(votdUrl, function (data, response) {
+     res.send(data);
+     });*/
 });
 
 app.get('/calendar', function (req, res) {
@@ -64,10 +77,14 @@ app.get('/calendar', function (req, res) {
 
 function listEvents(auth, res) {
     var calendar = google.calendar('v3');
+    var tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+
     calendar.events.list({
         auth: auth,
         calendarId: 'primary',
         timeMin: (new Date()).toISOString(),
+        timeMax: (tomorrow).toISOString(),
         maxResults: 10,
         singleEvents: true,
         orderBy: 'startTime'

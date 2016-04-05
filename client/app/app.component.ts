@@ -21,6 +21,7 @@ import {InspirationComponent} from './inspiration';
                 justify-content: center;
 
                 min-height: 95vh;
+                font-size: 2rem;
             }
             .magic-mirror .full-size{
                 flex:1 1;

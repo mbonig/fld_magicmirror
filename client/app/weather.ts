@@ -5,10 +5,13 @@ import 'rxjs/Rx';
 @Component({
     selector: 'weather',
     template: `<canvas id="weather-icon" width="300" height="300"></canvas>
-                <div class="temp">
-               <span>{{weather?.currently?.temperature}}&deg;</span>
+               <p>{{weather?.currently?.summary}}</p>
+               <div class="temp">
+                    <p>{{weather?.currently?.temperature}}&deg;</p>
+                    <p>{{weather?.currently?.precipProbability}}&#37; chance of rain</p>
                </div>
-               <p>{{weather?.currently?.summary}}</p>`,
+               <p>{{weather?.hourly?.summary}}</p>
+               `,
     providers: [WeatherService],
     styles: [`
         weather {
@@ -33,8 +36,6 @@ export class WeatherComponent {
             "partly-cloudy-day": Skycons.PARTLY_CLOUDY_DAY,
             "partly-cloudy-night": Skycons.PARTLY_CLOUDY_NIGHT
         };
-
-
     }
 
     ngAfterContentInit() {

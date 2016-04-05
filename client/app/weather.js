@@ -54,7 +54,7 @@ System.register(['angular2/core', './weather.services', 'rxjs/Rx'], function(exp
                 WeatherComponent = __decorate([
                     core_1.Component({
                         selector: 'weather',
-                        template: "<canvas id=\"weather-icon\" width=\"300\" height=\"300\"></canvas>\n                <div class=\"temp\">\n               <span>{{weather?.currently?.temperature}}&deg;</span>\n               </div>\n               <p>{{weather?.currently?.summary}}</p>",
+                        template: "<canvas id=\"weather-icon\" width=\"300\" height=\"300\"></canvas>\n               <p>{{weather?.currently?.summary}}</p>\n               <div class=\"temp\">\n                    <p>{{weather?.currently?.temperature}}&deg;</p>\n                    <p>{{weather?.currently?.precipProbability}}&#37; chance of rain</p>\n               </div>\n               <p>{{weather?.hourly?.summary}}</p>\n               ",
                         providers: [weather_services_1.WeatherService],
                         styles: ["\n        weather {\n            display: flex;\n        }\n    "]
                     }), 
