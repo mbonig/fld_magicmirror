@@ -27,7 +27,20 @@ System.register(['angular2/core', './votd.services'], function(exports_1, contex
                     this.verseService = verseService;
                 }
                 InspirationComponent.prototype.ngAfterContentInit = function () {
+                    this.getVotd();
+                    var twelveHours = 12 * 60 * 60 * 1000;
                     var _this = this;
+                    var doTheTimeout = function () {
+                        setTimeout(function () {
+                            _this.getVotd();
+                            doTheTimeout();
+                        }, twelveHours);
+                    };
+                    doTheTimeout();
+                };
+                InspirationComponent.prototype.getVotd = function () {
+                    var _this = this;
+                    console.log('getting the votd');
                     this.verseService.getVerse()
                         .map(function (res) { return res.json(); })
                         .subscribe(function (data) {

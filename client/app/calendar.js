@@ -27,7 +27,20 @@ System.register(['angular2/core', './calendar.service', 'rxjs/Rx'], function(exp
                     this._calendarService = _calendarService;
                 }
                 CalendarComponent.prototype.ngAfterContentInit = function () {
+                    this.getCalendar();
+                    var hour = 60 * 60 * 1000;
                     var _this = this;
+                    var doTheTimeout = function () {
+                        setTimeout(function () {
+                            _this.getCalendar();
+                            doTheTimeout();
+                        }, hour);
+                    };
+                    doTheTimeout();
+                };
+                CalendarComponent.prototype.getCalendar = function () {
+                    var _this = this;
+                    console.log('getting the calendar');
                     this._calendarService.getCalendar()
                         .map(function (res) { return res.json(); })
                         .map(function (data) {
@@ -42,7 +55,7 @@ System.register(['angular2/core', './calendar.service', 'rxjs/Rx'], function(exp
                 CalendarComponent = __decorate([
                     core_1.Component({
                         selector: 'calendar',
-                        template: "<div class=\"calendar\">\n                    <div *ngFor=\"#item of calendar\" class=\"calendar-item\">\n                        <span class=\"title\">{{item.summary}}</span>\n                        <span class=\"time\">{{item.start.date | date:'shortTime'}} -- {{item.end.date | date:'shortTime'}} </span>\n                    </div>\n                </div>",
+                        template: "<div class=\"calendar\">\n                    <div *ngFor=\"#item of calendar\" class=\"calendar-item\">\n                        <span class=\"title\">{{item.summary}}</span>\n                        <span class=\"time\">{{item.start.date | date:'shortTime'}} -- {{item.end.date | date:'shortTime'}} </span>\n                    </div>\n                    <div ng-if=\"calendar.length === 0\">\n                        <p>Nothing in your calendar</p>\n                    </div>\n                </div>",
                         providers: [calendar_service_1.CalendarService],
                         styles: ["\n        .calendar {\n            display: flex;\n            flex-direction: column;\n        }\n        \n        .calendar-item{\n            margin-bottom: 2rem;\n        }\n        \n        .calendar .title, .calendar .time {\n            display : block;\n        }\n        \n    "]
                     }), 
