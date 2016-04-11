@@ -39,6 +39,24 @@ export class WeatherComponent {
     }
 
     ngAfterContentInit() {
+        this.getWeather();
+
+        var thirtyMinutes = 30*60*1000;
+        var _this = this;
+        var doTheTimeout = function(){
+            setTimeout(function () {
+                _this.getWeather();
+                doTheTimeout()
+            }, thirtyMinutes);
+
+        };
+        doTheTimeout();
+
+    }
+
+    getWeather() {
+        console.log('getting weather');
+        var skycons = new Skycons({"color": '#fff'});
         this._weatherService.getWeather()
             .map(res => res.json())
             .subscribe(
@@ -47,8 +65,6 @@ export class WeatherComponent {
                     skycons.add("weather-icon", this.iconTranslator[data.currently.icon]);
                 }
             );
-
-        var skycons = new Skycons({"color": '#fff'});
     }
 
     logError(err) {

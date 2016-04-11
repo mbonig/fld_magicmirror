@@ -39,14 +39,27 @@ System.register(['angular2/core', './weather.services', 'rxjs/Rx'], function(exp
                     };
                 }
                 WeatherComponent.prototype.ngAfterContentInit = function () {
+                    this.getWeather();
+                    var thirtyMinutes = 30 * 60 * 1000;
                     var _this = this;
+                    var doTheTimeout = function () {
+                        setTimeout(function () {
+                            _this.getWeather();
+                            doTheTimeout();
+                        }, thirtyMinutes);
+                    };
+                    doTheTimeout();
+                };
+                WeatherComponent.prototype.getWeather = function () {
+                    var _this = this;
+                    console.log('getting weather');
+                    var skycons = new Skycons({ "color": '#fff' });
                     this._weatherService.getWeather()
                         .map(function (res) { return res.json(); })
                         .subscribe(function (data) {
                         _this.weather = data;
                         skycons.add("weather-icon", _this.iconTranslator[data.currently.icon]);
                     });
-                    var skycons = new Skycons({ "color": '#fff' });
                 };
                 WeatherComponent.prototype.logError = function (err) {
                     console.error('There was an error: ' + err);

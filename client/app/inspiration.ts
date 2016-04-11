@@ -17,6 +17,23 @@ export class InspirationComponent {
     }
 
     ngAfterContentInit() {
+        this.getVotd();
+
+        var twelveHours = 12 * 60 * 60 * 1000;
+        var _this = this;
+        var doTheTimeout = function () {
+            setTimeout(function () {
+                _this.getVotd();
+                doTheTimeout()
+            }, twelveHours);
+
+        };
+        doTheTimeout();
+
+    }
+
+    getVotd() {
+        console.log('getting the votd');
         this.verseService.getVerse()
             .map(res=>res.json())
             .subscribe(data=> {

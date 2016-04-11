@@ -9,6 +9,9 @@ import 'rxjs/Rx';
                         <span class="title">{{item.summary}}</span>
                         <span class="time">{{item.start.date | date:'shortTime'}} -- {{item.end.date | date:'shortTime'}} </span>
                     </div>
+                    <div ng-if="calendar.length === 0">
+                        <p>Nothing in your calendar</p>
+                    </div>
                 </div>`,
     providers: [CalendarService],
     styles: [`
@@ -35,6 +38,22 @@ export class CalendarComponent {
     }
 
     ngAfterContentInit() {
+        this.getCalendar();
+
+        var hour = 60 * 60 * 1000;
+        var _this = this;
+        var doTheTimeout = function () {
+            setTimeout(function () {
+                _this.getCalendar();
+                doTheTimeout()
+            }, hour);
+
+        };
+        doTheTimeout();
+    }
+
+    getCalendar(){
+        console.log('getting the calendar');
         this._calendarService.getCalendar()
             .map(res=>res.json())
             .map(data=> {
@@ -45,6 +64,5 @@ export class CalendarComponent {
                 return data;
             })
             .subscribe(calendar=>this.calendar = calendar);
-
     }
 }
