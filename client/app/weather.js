@@ -53,12 +53,17 @@ System.register(['angular2/core', './weather.services', 'rxjs/Rx'], function(exp
                 WeatherComponent.prototype.getWeather = function () {
                     var _this = this;
                     console.log('getting weather');
-                    var skycons = new Skycons({ "color": '#fff' });
+                    var that = this;
                     this._weatherService.getWeather()
                         .map(function (res) { return res.json(); })
                         .subscribe(function (data) {
                         _this.weather = data;
-                        skycons.add("weather-icon", _this.iconTranslator[data.currently.icon]);
+                        setTimeout(function () {
+                            data.daily.data.forEach(function (day, i) {
+                                var skycons = new Skycons({ "color": '#fff' });
+                                skycons.add("weather-icon-" + i, that.iconTranslator[day.icon]);
+                            });
+                        }, 1000);
                     });
                 };
                 WeatherComponent.prototype.logError = function (err) {
@@ -67,9 +72,9 @@ System.register(['angular2/core', './weather.services', 'rxjs/Rx'], function(exp
                 WeatherComponent = __decorate([
                     core_1.Component({
                         selector: 'weather',
-                        template: "<canvas id=\"weather-icon\" width=\"300\" height=\"300\"></canvas>\n               <p>{{weather?.currently?.summary}}</p>\n               <div class=\"temp\">\n                    <p>{{weather?.currently?.temperature}}&deg;</p>\n                    <p>{{weather?.currently?.precipProbability}}&#37; chance of rain</p>\n               </div>\n               <p>{{weather?.hourly?.summary}}</p>\n               ",
+                        template: "<div class=\"days\">\n                <div class=\"day\" *ngFor=\"#item of weather?.daily?.data?.slice(0,3); #i = index \">\n                    <canvas id=\"weather-icon-{{i}}\" width=\"300\" height=\"300\"></canvas>\n                    <p>{{item.summary}}</p>\n                    <div class=\"temp\">\n                        <p>low: {{item.temperatureMin}}&deg;</p>\n                        <p>high: {{item.temperatureMax}}&deg;</p>\n                        <p>{{item.precipProbability}}&#37; chance of rain</p>\n                    </div>\n                    \n                </div>\n               </div>",
                         providers: [weather_services_1.WeatherService],
-                        styles: ["\n        weather {\n            display: flex;\n        }\n    "]
+                        styles: ["\n        weather {\n            width: 90vw;\n        }\n        .days{\n            display: flex;\n        }\n        .days .day {\n            flex: 1 1 auto;\n            text-align: center;\n        }\n        weather canvas{\n            display: block;\n        }\n        weather .day {\n            \n        }\n    "]
                     }), 
                     __metadata('design:paramtypes', [weather_services_1.WeatherService])
                 ], WeatherComponent);

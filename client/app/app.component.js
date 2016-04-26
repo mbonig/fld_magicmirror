@@ -33,9 +33,9 @@ System.register(['angular2/core', './weather', './calendar', './inspiration'], f
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'magic-mirror',
-                        template: "<div class=\"magic-mirror\">\n                    <weather class=\"full-size\">loading...</weather>\n                    <calendar class=\"full-size\"></calendar>\n                    <inspiration class=\"full-size\"></inspiration>\n                </div>",
+                        template: "<div class=\"magic-mirror\">\n                    <inspiration class=\"full-size\"></inspiration>\n                    <weather class=\"full-size\">loading...</weather>\n                    \n                </div>",
                         directives: [weather_1.WeatherComponent, calendar_1.CalendarComponent, inspiration_1.InspirationComponent],
-                        styles: ["\n            .magic-mirror {\n                display:flex;\n\n                -webkit-align-items: center;\n                align-items: center;\n                -webkit-justify-content: center;\n                justify-content: center;\n\n                min-height: 95vh;\n                font-size: 2rem;\n            }\n            .magic-mirror .full-size{\n                flex:1 1;\n            }\n        "
+                        styles: ["\n            .magic-mirror {\n                display:flex;\n                flex-direction: column;\n                -webkit-align-items: center;\n                align-items: center;\n                -webkit-justify-content: center;\n                justify-content: center;\n\n                min-height: 95vh;\n                font-size: 2rem;\n            }\n            .magic-mirror .full-size{\n                width: 90vw;\n            }\n            inspiration {\n                min-height: 30vh;\n            }\n           \n        "
                         ]
                     }), 
                     __metadata('design:paramtypes', [])

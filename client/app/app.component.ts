@@ -6,15 +6,15 @@ import {InspirationComponent} from './inspiration';
 @Component({
     selector: 'magic-mirror',
     template: `<div class="magic-mirror">
-                    <weather class="full-size">loading...</weather>
-                    <calendar class="full-size"></calendar>
                     <inspiration class="full-size"></inspiration>
+                    <weather class="full-size">loading...</weather>
+                    
                 </div>`,
     directives: [WeatherComponent, CalendarComponent, InspirationComponent],
     styles: [`
             .magic-mirror {
                 display:flex;
-
+                flex-direction: column;
                 -webkit-align-items: center;
                 align-items: center;
                 -webkit-justify-content: center;
@@ -24,8 +24,12 @@ import {InspirationComponent} from './inspiration';
                 font-size: 2rem;
             }
             .magic-mirror .full-size{
-                flex:1 1;
+                width: 90vw;
             }
+            inspiration {
+                min-height: 30vh;
+            }
+           
         `
     ]
 })
