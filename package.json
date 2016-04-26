@@ -4,10 +4,12 @@
   "description": "A simple angular2 page for displaying magic mirror stuff",
   "main": "index.js",
   "scripts": {
+ "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "server": "node server/app.js",
-    "start": "concurrent \"npm run server\" \"npm run tsc:w\""
+    "lite": "lite-server",
+    "typings": "typings",
+    "postinstall": "typings install"
   },
   "author": "Matthew Bonig",
   "license": "ISC",
@@ -19,6 +21,8 @@
   },
   "devDependencies": {
     "concurrently": "^1.0.0",
-    "typescript": "^1.7.5"
-  }
+ "lite-server": "^2.2.0",
+    "typescript": "^1.8.9",
+    "typings":"^0.7.12"
+     }
 }
