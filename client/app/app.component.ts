@@ -27,7 +27,7 @@ import {InspirationComponent} from './inspiration';
                 width: 90vw;
             }
             inspiration {
-                min-height: 30vh;
+                min-height: 20vh;
             }
            
         `
