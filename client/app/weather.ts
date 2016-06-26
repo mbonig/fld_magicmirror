@@ -11,7 +11,7 @@ import 'rxjs/Rx';
                     <div class="temp">
                         <p>low: {{item.temperatureMin}}&deg;</p>
                         <p>high: {{item.temperatureMax}}&deg;</p>
-                        <p>{{item.precipProbability}}&#37; chance of rain</p>
+                        <p>{{item.precipProbability * 100}}&#37; chance of rain</p>
                     </div>
                     
                 </div>
