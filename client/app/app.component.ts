@@ -6,8 +6,8 @@ import {InspirationComponent} from './inspiration';
 @Component({
     selector: 'magic-mirror',
     template: `<div class="magic-mirror">
-                    <inspiration class="full-size"></inspiration>
                     <weather class="full-size">loading...</weather>
+                    <inspiration class="full-size"></inspiration>
                     
                 </div>`,
     directives: [WeatherComponent, CalendarComponent, InspirationComponent],
@@ -25,9 +25,11 @@ import {InspirationComponent} from './inspiration';
             }
             .magic-mirror .full-size{
                 width: 90vw;
+                height: 100vh;
+                overflow: hidden;
             }
             inspiration {
-                min-height: 30vh;
+                min-height: 20vh;
             }
            
         `

@@ -4,8 +4,8 @@ import {VerseService} from './votd.services';
 @Component({
     selector: 'inspiration',
     template: `<div>
-                <p>{{verse?.contents?.verse}}</p>
-                <p>{{verse?.contents?.book}} {{verse?.contents?.chapter}}:{{verse?.contents?.number}}</p>
+                <p>{{verse[0].bookname}} {{verse[0].chapter}}</p>
+                <p *ngFor="#v of verse">{{v.verse}}: {{v.text}}</p>
                </div>`,
     providers: [VerseService]
 })
@@ -14,6 +14,7 @@ export class InspirationComponent {
 
     constructor(private verseService:VerseService) {
         this.verseService = verseService;
+        this.verse = [];
     }
 
     ngAfterContentInit() {
