@@ -33,9 +33,9 @@ System.register(['angular2/core', './weather', './calendar', './inspiration'], f
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'magic-mirror',
-                        template: "<div class=\"magic-mirror\">\n                    <inspiration class=\"full-size\"></inspiration>\n                    <weather class=\"full-size\">loading...</weather>\n                    \n                </div>",
+                        template: "<div class=\"magic-mirror\">\n                    <weather class=\"full-size\">loading...</weather>\n                    <inspiration class=\"full-size\"></inspiration>\n                    \n                </div>",
                         directives: [weather_1.WeatherComponent, calendar_1.CalendarComponent, inspiration_1.InspirationComponent],
-                        styles: ["\n            .magic-mirror {\n                display:flex;\n                flex-direction: column;\n                -webkit-align-items: center;\n                align-items: center;\n                -webkit-justify-content: center;\n                justify-content: center;\n\n                min-height: 95vh;\n                font-size: 2rem;\n            }\n            .magic-mirror .full-size{\n                width: 90vw;\n            }\n            inspiration {\n                min-height: 20vh;\n            }\n           \n        "
+                        styles: ["\n            .magic-mirror {\n                display:flex;\n                flex-direction: column;\n                -webkit-align-items: center;\n                align-items: center;\n                -webkit-justify-content: center;\n                justify-content: center;\n\n                min-height: 95vh;\n                font-size: 2rem;\n            }\n            .magic-mirror .full-size{\n                width: 90vw;\n                height: 100vh;\n                overflow: hidden;\n            }\n            inspiration {\n                min-height: 20vh;\n            }\n           \n        "
                         ]
                     }), 
                     __metadata('design:paramtypes', [])
