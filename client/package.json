@@ -8,7 +8,6 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "start": "npm run tsc:w"
-
   },
   "dependencies": {
     "angular2": "2.0.0-beta.3",

@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http'], function(exports_1, context_1) {
+System.register(['@angular/core'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,32 +10,30 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1;
-    var WeatherService;
+    var core_1;
+    var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (http_1_1) {
-                http_1 = http_1_1;
             }],
         execute: function() {
-            WeatherService = (function () {
-                function WeatherService(http) {
-                    this.http = http;
+            AppComponent = (function () {
+                function AppComponent() {
+                    this.title = 'newclient';
                 }
-                WeatherService.prototype.getWeather = function () {
-                    return this.http.get('/weather');
-                };
-                WeatherService = __decorate([
-                    core_1.Injectable(), 
-                    __metadata('design:paramtypes', [http_1.Http])
-                ], WeatherService);
-                return WeatherService;
+                AppComponent = __decorate([
+                    core_1.Component({
+                        selector: 'app-root',
+                        templateUrl: './app.component.html',
+                        styleUrls: ['./app.component.sass']
+                    }), 
+                    __metadata('design:paramtypes', [])
+                ], AppComponent);
+                return AppComponent;
             }());
-            exports_1("WeatherService", WeatherService);
+            exports_1("AppComponent", AppComponent);
         }
     }
 });
-//# sourceMappingURL=weather.services.js.map
+//# sourceMappingURL=app.component.js.map

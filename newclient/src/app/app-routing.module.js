@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/router'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,32 +10,32 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1;
-    var WeatherService;
+    var core_1, router_1;
+    var routes, AppRoutingModule;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (http_1_1) {
-                http_1 = http_1_1;
+            function (router_1_1) {
+                router_1 = router_1_1;
             }],
         execute: function() {
-            WeatherService = (function () {
-                function WeatherService(http) {
-                    this.http = http;
+            routes = [];
+            AppRoutingModule = (function () {
+                function AppRoutingModule() {
                 }
-                WeatherService.prototype.getWeather = function () {
-                    return this.http.get('/weather');
-                };
-                WeatherService = __decorate([
-                    core_1.Injectable(), 
-                    __metadata('design:paramtypes', [http_1.Http])
-                ], WeatherService);
-                return WeatherService;
+                AppRoutingModule = __decorate([
+                    core_1.NgModule({
+                        imports: [router_1.RouterModule.forRoot(routes)],
+                        exports: [router_1.RouterModule]
+                    }), 
+                    __metadata('design:paramtypes', [])
+                ], AppRoutingModule);
+                return AppRoutingModule;
             }());
-            exports_1("WeatherService", WeatherService);
+            exports_1("AppRoutingModule", AppRoutingModule);
         }
     }
 });
-//# sourceMappingURL=weather.services.js.map
+//# sourceMappingURL=app-routing.module.js.map

@@ -26,7 +26,7 @@ app.get('/votd', function (req, res) {
     });
 });
 
-app.use(express.static('client'));
+app.use(express.static('newclient/src'));
 
 app.listen(3000, function () {
     console.log('Server listening on port 3000');
