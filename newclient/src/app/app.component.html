@@ -1,3 +1,13 @@
-<weather>
-  
-</weather>
+<div class="full-screen"  (click)="rotateScreen()">
+
+    <weather [class.active]="toShow === 0">
+        
+    </weather>
+    <inspiration [class.active]="toShow === 1">
+
+    </inspiration>
+    <iotd [class.active]="toShow === 2">
+
+    </iotd> 
+
+</div>

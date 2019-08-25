@@ -8,7 +8,7 @@ console.log('Skycons:', Skycons);
     selector: 'weather',
     template: `<div class="days">
                 <div class="day" *ngFor="let item of weather?.daily?.data?.slice(0,1); let i = index ">
-                    <canvas id="weather-icon-{{i}}" width="300" height="300"></canvas>
+                    <canvas id="weather-icon-{{i}}" width="300" height="240"></canvas>
                     <p>{{item.summary}}</p>
                     <div class="temp">
                         <p>low: {{item.temperatureMin}}&deg;</p>
@@ -20,21 +20,16 @@ console.log('Skycons:', Skycons);
                </div>`,
     providers: [WeatherService],
     styles: [`
-        weather {
-            width: 90vw;
-        }
-        .days{
+        
+        .days {
             display: flex;
         }
         .days .day {
             flex: 1 1 auto;
             text-align: center;
         }
-        weather canvas{
-            display: block;
-        }
-        weather .day {
-            
+        p {
+            font-size: 1.3rem;
         }
     `]
 })
@@ -62,19 +57,12 @@ export class WeatherComponent {
         this.getWeather();
 
         var thirtyMinutes = 30 * 60 * 1000;
-        var _this = this;
-        var doTheTimeout = function () {
-            setTimeout(function () {
-                _this.getWeather();
-                doTheTimeout()
-            }, thirtyMinutes);
-
-        };
-        doTheTimeout();
+        
+        setInterval(() => this.getWeather(), thirtyMinutes);
 
     }
 
-    getProb(item){
+    getProb(item) {
         return Math.floor(item.precipProbability * 100);
     }
 

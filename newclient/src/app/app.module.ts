@@ -5,11 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WeatherComponent } from './weather';
 import { HttpClientModule } from '@angular/common/http';
+import { InspirationComponent } from './inspiration';
+import { DailyImage } from './dailyImage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WeatherComponent
+    WeatherComponent,
+    InspirationComponent,
+    DailyImage
   ],
   imports: [
     BrowserModule,
