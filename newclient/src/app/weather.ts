@@ -55,11 +55,8 @@ export class WeatherComponent {
 
     ngAfterContentInit() {
         this.getWeather();
-
-        var thirtyMinutes = 30 * 60 * 1000;
-        
+        const thirtyMinutes = 30 * 60 * 1000;
         setInterval(() => this.getWeather(), thirtyMinutes);
-
     }
 
     getProb(item) {
