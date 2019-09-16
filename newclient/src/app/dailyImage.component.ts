@@ -34,9 +34,9 @@ export class DailyImage implements OnInit {
 
     async ngOnInit() {
         setInterval(async () => {
-
             this.source$ = await this.imageService.getImage();
         }, ONE_HUNDRED_SECONDS);
+        
         setInterval(() => {
             if (this.video.nativeElement.paused) {
                 this.video.nativeElement.play();

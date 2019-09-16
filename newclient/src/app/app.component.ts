@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-const TEN_SECONDS = 100000;
+const THIRTY_SECONDS = 30 * 1000;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,6 +17,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    setInterval(() => this.rotateScreen(), TEN_SECONDS);
+    setInterval(() => this.rotateScreen(), THIRTY_SECONDS);
   }
 }

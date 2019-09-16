@@ -11,8 +11,8 @@ console.log('Skycons:', Skycons);
                     <canvas id="weather-icon-{{i}}" width="300" height="240"></canvas>
                     <p>{{item.summary}}</p>
                     <div class="temp">
-                        <p>low: {{item.temperatureMin}}&deg;</p>
                         <p>high: {{item.temperatureMax}}&deg;</p>
+                        <p>low: {{item.temperatureMin}}&deg;</p>
                         <p>{{getProb(item)}}&#37; chance of rain</p>
                     </div>
                     

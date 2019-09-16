@@ -23,18 +23,11 @@ export class InspirationComponent {
 
     ngAfterContentInit() {
         this.getVotd();
-
         var twelveHours = 12 * 60 * 60 * 1000;
-        var _this = this;
-        var doTheTimeout = function () {
-            setTimeout(function () {
-                _this.getVotd();
-                doTheTimeout()
-            }, twelveHours);
-
-        };
-        doTheTimeout();
-
+        setInterval(()=>{
+            this.getVotd();
+        }, twelveHours);
+        
     }
 
     getVotd() {
