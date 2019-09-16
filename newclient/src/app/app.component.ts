@@ -8,7 +8,7 @@ const THIRTY_SECONDS = 30 * 1000;
 })
 export class AppComponent implements OnInit {
   title = 'newclient';
-  toShow = 2;
+  toShow = 0;
   rotateScreen() {
     this.toShow += 1;
     if (this.toShow >= 3) {
@@ -17,6 +17,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    //setInterval(() => this.rotateScreen(), THIRTY_SECONDS);
+    setInterval(() => this.rotateScreen(), THIRTY_SECONDS);
   }
 }
