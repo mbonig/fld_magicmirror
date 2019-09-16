@@ -18,6 +18,7 @@ const ONE_HUNDRED_SECONDS = 100000;
        } 
        div {
            overflow-y: hidden;
+           margin: -1rem;
        }
        img {
            margin-left: auto;
