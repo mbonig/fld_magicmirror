@@ -14,12 +14,16 @@ const ONE_HUNDRED_SECONDS = 100000;
     styles: [`
        :host{
            text-align: center;
+           display: block;
        } 
+       div {
+           overflow-y: hidden;
+       }
        img {
            margin-left: auto;
            margin-right: auto;
            width: auto;
-           max-height:100%;
+           max-height:100vh;
        }
     `]
 })

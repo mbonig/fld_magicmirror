@@ -15,7 +15,6 @@ console.log('Skycons:', Skycons);
                         <p>low: {{item.temperatureMin}}&deg;</p>
                         <p>{{getProb(item)}}&#37; chance of rain</p>
                     </div>
-                    
                 </div>
                </div>`,
     providers: [WeatherService],
