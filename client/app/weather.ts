@@ -2,6 +2,8 @@ import {Component} from 'angular2/core';
 import {WeatherService} from './weather.services';
 import 'rxjs/Rx';
 
+declare var Skycons : any;
+
 @Component({
     selector: 'weather',
     template: `<div class="days">
@@ -36,21 +38,33 @@ import 'rxjs/Rx';
         }
     `]
 })
+
 export class WeatherComponent {
     weather:Object;
     iconTranslator:Object;
 
     constructor(private _weatherService:WeatherService) {
+// @ts-ignore
         this.iconTranslator = {
+	    // @ignore-ts
             "clear-day": Skycons.CLEAR_DAY,
+            // @ts-ignore
             "clear-night": Skycons.CLEAR_NIGHT,
+// @ts-ignore
             "rain": Skycons.RAIN,
+// @ts-ignore
             "snow": Skycons.SNOW,
+// @ts-ignore
             "sleet": Skycons.SLEET,
+// @ts-ignore
             "wind": Skycons.WIND,
+// @ts-ignore
             "fog": Skycons.FOG,
+// @ts-ignore
             "cloudy": Skycons.CLOUDY,
+// @ts-ignore
             "partly-cloudy-day": Skycons.PARTLY_CLOUDY_DAY,
+// @ts-ignore
             "partly-cloudy-night": Skycons.PARTLY_CLOUDY_NIGHT
         };
 
@@ -82,6 +96,7 @@ export class WeatherComponent {
                     this.weather = data;
                     setTimeout(function () {
                         data.daily.data.forEach(function (day, i) {
+// @ts-ignore
                             var skycons = new Skycons({"color": '#fff'});
                             skycons.add(`weather-icon-${i}`, that.iconTranslator[day.icon]);
                         });

@@ -25,16 +25,27 @@ System.register(['angular2/core', './weather.services', 'rxjs/Rx'], function(exp
             WeatherComponent = (function () {
                 function WeatherComponent(_weatherService) {
                     this._weatherService = _weatherService;
+                    // @ts-ignore
                     this.iconTranslator = {
+                        // @ignore-ts
                         "clear-day": Skycons.CLEAR_DAY,
+                        // @ts-ignore
                         "clear-night": Skycons.CLEAR_NIGHT,
+                        // @ts-ignore
                         "rain": Skycons.RAIN,
+                        // @ts-ignore
                         "snow": Skycons.SNOW,
+                        // @ts-ignore
                         "sleet": Skycons.SLEET,
+                        // @ts-ignore
                         "wind": Skycons.WIND,
+                        // @ts-ignore
                         "fog": Skycons.FOG,
+                        // @ts-ignore
                         "cloudy": Skycons.CLOUDY,
+                        // @ts-ignore
                         "partly-cloudy-day": Skycons.PARTLY_CLOUDY_DAY,
+                        // @ts-ignore
                         "partly-cloudy-night": Skycons.PARTLY_CLOUDY_NIGHT
                     };
                 }
@@ -60,6 +71,7 @@ System.register(['angular2/core', './weather.services', 'rxjs/Rx'], function(exp
                         _this.weather = data;
                         setTimeout(function () {
                             data.daily.data.forEach(function (day, i) {
+                                // @ts-ignore
                                 var skycons = new Skycons({ "color": '#fff' });
                                 skycons.add("weather-icon-" + i, that.iconTranslator[day.icon]);
                             });

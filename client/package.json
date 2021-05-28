@@ -1,14 +1,13 @@
 {
-  "name": "magicmirror",
+  "name": "magicmirror-client",
   "version": "1.0.0",
-  "description": "A simple angular2 page for displaying magic mirror stuff",
+  "description": "frontend for a magic mirror",
   "author": "Matthew Bonig",
   "license": "ISC",
   "scripts": {
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "start": "npm run tsc:w"
-
   },
   "dependencies": {
     "angular2": "2.0.0-beta.3",
@@ -18,6 +17,7 @@
     "rxjs": "5.0.0-beta.0",
     "systemjs": "0.19.6",
     "tsd": "^0.6.5",
+    "typescript": "^1.8.9",
     "zone.js": "0.5.11"
   }
 }

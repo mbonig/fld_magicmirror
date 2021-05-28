@@ -25,6 +25,7 @@ System.register(['angular2/core', './votd.services'], function(exports_1, contex
                 function InspirationComponent(verseService) {
                     this.verseService = verseService;
                     this.verseService = verseService;
+                    this.verse = [];
                 }
                 InspirationComponent.prototype.ngAfterContentInit = function () {
                     this.getVotd();
@@ -50,7 +51,7 @@ System.register(['angular2/core', './votd.services'], function(exports_1, contex
                 InspirationComponent = __decorate([
                     core_1.Component({
                         selector: 'inspiration',
-                        template: "<div>\n                <p>{{verse?.contents?.verse}}</p>\n                <p>{{verse?.contents?.book}} {{verse?.contents?.chapter}}:{{verse?.contents?.number}}</p>\n               </div>",
+                        template: "<div>\n                <p *ngIf=\"verse.length > 0\">{{verse[0].bookname}} {{verse[0].chapter}}</p>\n                <p *ngFor=\"#v of verse\">{{v.verse}}: {{v.text}}</p>\n               </div>",
                         providers: [votd_services_1.VerseService]
                     }), 
                     __metadata('design:paramtypes', [votd_services_1.VerseService])

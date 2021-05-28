@@ -25,7 +25,7 @@ import {InspirationComponent} from './inspiration';
             }
             .magic-mirror .full-size{
                 width: 90vw;
-                height: 100vh;
+               
                 overflow: hidden;
             }
             inspiration {

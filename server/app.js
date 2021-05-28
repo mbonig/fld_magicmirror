@@ -18,9 +18,7 @@ app.get('/weather', function (req, res) {
 });
 
 app.get('/votd', function (req, res) {
-    res.send({});
-    return;
-    var votdUrl = 'http://labs.bible.org/api/?passage=votd&type=json';
+    var votdUrl = 'https://labs.bible.org/api/?passage=votd&type=json';
     client.get(votdUrl, function (data, response) {
         res.send(data);
     });

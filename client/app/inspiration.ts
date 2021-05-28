@@ -4,7 +4,7 @@ import {VerseService} from './votd.services';
 @Component({
     selector: 'inspiration',
     template: `<div>
-                <p>{{verse[0].bookname}} {{verse[0].chapter}}</p>
+                <p *ngIf="verse.length > 0">{{verse[0].bookname}} {{verse[0].chapter}}</p>
                 <p *ngFor="#v of verse">{{v.verse}}: {{v.text}}</p>
                </div>`,
     providers: [VerseService]
